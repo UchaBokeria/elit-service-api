@@ -35,10 +35,10 @@ if(!method_exists($Router, $Request))
 
 }
 
-define( 'API_RESULT_JSON' , 
+$API_RESULT_JSON =
     array_merge(
         [ "result" => $Router->$Request() ], 
             [ "code" => "200",
               "success" => true,
               "msg" => "Success"
-            ]));
+            ]);
