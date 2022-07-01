@@ -38,6 +38,8 @@ echo 13;
                             "id" => $User[0]["id"]   
                         ]);
 echo 20;
+echo "<br> user: " . $User[0]["id"];
+echo "dd: $Token";
         return [ 'id' => $User[0]["id"], 'token' => $Token ];
 
     }
