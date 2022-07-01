@@ -38,7 +38,7 @@ class Auth extends Database
                             "id" => $User[0]["id"]   
                         ]);
         $Response = array( 'id' => $User[0]["id"], 'token' => $Token );
-        return $Response;
+        return ['1'=>1];
 
     }
 
