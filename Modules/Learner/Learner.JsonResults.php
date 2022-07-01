@@ -15,11 +15,13 @@ if (!class_exists($callName))
     {
         
         header('http/1.1 404 Not Found');
+        
         die(json_encode(NOT_FOUND));
         
     } 
    
     $callName = str_replace('-','',$CALL[COUNT($CALL)-2]);
+
     $Request = str_replace('-','',$CALL[COUNT($CALL)-1]);
 
     define('FINDBYURLPARAMETER' ,$CALL[COUNT($CALL)]);
@@ -27,12 +29,17 @@ if (!class_exists($callName))
 }
 
 $Router = new $callName();
+
 if(!method_exists($Router, $Request)) 
 {
 
     header('http/1.1 404 Not Found');
+
     die(json_encode(NOT_FOUND));
 
 }
 
-define( 'API_RESULT_JSON' , array_merge( array( "result" => $Router->$Request() ), ["code" => "200", "success" => true, "msg" => "Success"]) );
+$API_RESULT_JSON = array_merge( 
+    [ "result" => $Router->$Request() ], 
+    [ "code" => "200", "success" => true, "msg" => "Success" ]
+);
