@@ -34,5 +34,5 @@ if(!method_exists($Router, $Request))
     die(json_encode(NOT_FOUND));
 
 }
-
+var_dump(SUCCESS_STATUS);
 define( 'API_RESULT_JSON' , array_merge( array( "result" => $Router->$Request() ), SUCCESS_STATUS) );
