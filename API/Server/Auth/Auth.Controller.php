@@ -40,6 +40,9 @@ echo 13;
 echo 20;
 echo "<br> user: " . $User[0]["id"];
 echo "dd: $Token";
+
+echo "  <br>  ";
+var_dump( [ 'id' => $User[0]["id"], 'token' => $Token ]);
         return [ 'id' => $User[0]["id"], 'token' => $Token ];
 
     }
