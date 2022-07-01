@@ -4,4 +4,5 @@
 Learn('Configs', "json", function($dir,$filename) {
     $parameters = json_decode(file_get_contents("./$dir/$filename"),true);
     foreach ($parameters as $key => $value) define(strtoupper($key), $value);
+    var_dump(payment_required); 
 });
