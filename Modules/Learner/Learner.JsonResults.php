@@ -35,4 +35,4 @@ if(!method_exists($Router, $Request))
 
 }
 
-define( 'API_RESULT_JSON' , array_merge( array( "result" => $Router->$Request() ), constant(SUCCESS_STATUS)) );
+define( 'API_RESULT_JSON' , array_merge( array( "result" => $Router->$Request() ), constant("SUCCESS_STATUS")) );
