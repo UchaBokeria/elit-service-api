@@ -3,6 +3,7 @@
 $URI = parse_url(explode('?',$_SERVER['REQUEST_URI'])[0], PHP_URL_PATH);
 $CALL = explode("/", $URI);
 $EUPES = array_count_values($CALL)[""];
+
 for ($i=0; $i < $EUPES; $i++)  unset($CALL[array_search("",$CALL)]);
 
 $callName = str_replace('-','',$CALL[COUNT($CALL)-1]);
@@ -15,8 +16,12 @@ if (!class_exists($callName))
     {
         
         header('http/1.1 404 Not Found');
-        
-        die(json_encode(NOT_FOUND));
+
+        die(json_encode([
+            "code" => "404",
+            "success" => false,
+            "msg" => "You are not trying to access invalid route"
+        ]));
         
     } 
    
