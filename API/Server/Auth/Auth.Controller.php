@@ -42,7 +42,7 @@ class Auth extends Database
 
     }
 
-    private function Register()
+    public function Register()
     {
 
         /** * ! ! ! NOT FOR USERS ! ! ! * */
