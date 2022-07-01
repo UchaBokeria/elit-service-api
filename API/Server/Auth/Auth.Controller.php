@@ -16,8 +16,8 @@ class Auth extends Database
     public function GetToken()
     {
 
-        Post();echo 1;
-        AuthScheme::CheckParameters();echo 2;
+        Post();
+        AuthScheme::CheckParameters();
 
         $User = parent::GET("   SELECT  id,
                                         token,
@@ -25,10 +25,10 @@ class Auth extends Database
                                 FROM    users 
                                 WHERE   username = :username ; ",
                                 [   'username' => $_POST["username"]   ]);
-        echo 12;
+        
         if(!parent::Exists()) Unauthorized();
         elseif(!password_verify($_POST["password"], $User[0]["password"])) Unauthorized();
-echo 13;
+
         $Token = AuthScheme::GenerateToken();
         parent::SET("   UPDATE  users SET   token = :token, 
                                             last_actived = NOW() 
@@ -37,13 +37,8 @@ echo 13;
                             "token" => $Token, 
                             "id" => $User[0]["id"]   
                         ]);
-echo 20;
-echo "<br> user: " . $User[0]["id"];
-echo "dd: $Token";
-
-echo "  <br>  ";
-var_dump( [ 'id' => $User[0]["id"], 'token' => $Token ]);
-        return [ 'id' => $User[0]["id"], 'token' => $Token ];
+        $Response = [ 'id' => $User[0]["id"], 'token' => $Token ];
+        return $Response;
 
     }
 
