@@ -6,7 +6,7 @@ class Guardian extends Database
     public function checkToken()
     {
 
-        $TOKEN = $this->getBearerToken();
+        $TOKEN = $_POST["token"];
         if(!isset($TOKEN) || empty($TOKEN)) return false;
 
         $matches = parent::GET("    SELECT    users.id AS USERID,
