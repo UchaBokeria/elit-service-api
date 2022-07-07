@@ -9,7 +9,6 @@ function Guardian()
     if(!(new Guardian)->checkToken())
     {
         
-        header("HTTP/1.1 401 Unauthorized");
         Unauthorized();
 
     }
@@ -20,7 +19,11 @@ function Unauthorized()
 {
 
     header("HTTP/1.1 401 Unauthorized");
-    die(json_encode(UNAUTHORIZED_STATUS));
+    die(json_encode([
+        "code" => "401",
+        "success" => false,
+        "msg" => "You Are Not Authorized To Perform This Action"
+    ]));
 
 }
 
