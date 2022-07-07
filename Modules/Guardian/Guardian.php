@@ -7,6 +7,8 @@ class Guardian extends Database
     {
 
         $TOKEN = $this->getBearerToken();
+        echo $TOKEN;
+        var_dump(!isset($TOKEN) || empty($TOKEN));
         if(!isset($TOKEN) || empty($TOKEN)) return false;
 
         $matches = parent::GET("    SELECT    users.id AS USERID,
