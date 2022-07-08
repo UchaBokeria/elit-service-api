@@ -24,13 +24,13 @@ class Calls extends Database
                                             FROM_UNIXTIME(call_datetime) AS datetime,
                                             IF(call_type_id = 1, source, destination) AS phone,   
                                             CONCAT(
-                                                'http://192.168.4.250:8000/', DATE(FROM_UNIXTIME(asterisk_call_log..call_datetime)), '/', asterisk_call_record.name,'.', asterisk_call_record.format
+                                                'http://192.168.4.250:8000/', DATE(FROM_UNIXTIME(asterisk_call_log.call_datetime)), '/', asterisk_call_record.name,'.', asterisk_call_record.format
                                             ) AS record
                                             
                                 FROM        asterisk_call_log
                                 LEFT JOIN   asterisk_call_record ON asterisk_call_log_id = asterisk_call_log.id
                                 WHERE       IF(call_type_id = 1, source like :source, destination like :destination); ",
-                                [ 'source' => "%$_POST[phone]%", 'destination' => "%$_POST[phone]%" ],true );
+                                [ 'source' => "%$_POST[phone]%", 'destination' => "%$_POST[phone]%" ] );
 
     }
 
