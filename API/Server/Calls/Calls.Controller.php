@@ -30,7 +30,7 @@ class Calls extends Database
                                 FROM        asterisk_call_log
                                 LEFT JOIN   asterisk_call_record ON asterisk_call_log_id = asterisk_call_log.id
                                 WHERE       IF(call_type_id = 1, source like :source, destination like :destination); ",
-                                [ 'source' => "%$_POST[phone]%", 'destination' => "%$_POST[phone]%" ] );
+                                [ 'source' => "%$_POST[phone]%", 'destination' => "%$_POST[phone]%" ],true );
 
     }
 
