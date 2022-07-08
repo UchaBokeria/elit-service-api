@@ -23,7 +23,7 @@ class Calls extends Database
         return parent::GET("    SELECT      asterisk_call_log.id AS id,
                                             FROM_UNIXTIME(call_datetime) AS datetime,
                                             IF(call_type_id = 1, source, destination) AS phone,   
-                                            CONCAT('', asterisk_call_record.name) AS record
+                                            CONCAT('http://192.168.4.250:8000/" . date('y/m/d') . "/', asterisk_call_record.name) AS record
                                             
                                 FROM        asterisk_call_log
                                 LEFT JOIN   asterisk_call_record ON asterisk_call_log_id = asterisk_call_log.id
